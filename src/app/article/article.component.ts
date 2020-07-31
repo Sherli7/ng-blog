@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { ARTICLES } from '../mock-article';
 import { ArticleService } from '../services/article.service';
 import { SharedService } from '../services/shared.service';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article',
@@ -18,7 +18,8 @@ article: Article = new Article();
               private articleService: ArticleService,
               private router: Router,
               private titleService: Title,
-              private sharedService: SharedService
+              private sharedService: SharedService,
+              private meta: Meta
     ) {}
 
   ngOnInit(): void {
@@ -31,7 +32,15 @@ article: Article = new Article();
            return;
          }
          this.article = article;
-         this.titleService.setTitle(`${this.article.title} - ${this.sharedService.blogTitle}`);
+         this.titleService.setTitle(`${this.article.title} - ${this.sharedService.blogTitle}`
+         );
+         this.meta.addTags([
+          {name: 'description', content: this.article.description},
+          {property: 'org:title', content: this.article.title},
+          {property: 'org:description', content: this.article.description},
+          {property: 'org:image', content: this.article.imageUrl},
+          {property: 'org:site_name', content: this.sharedService.blogTitle}
+        ]);
        }
         );
     });

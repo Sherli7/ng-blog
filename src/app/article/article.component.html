@@ -1,0 +1,7 @@
+<div>
+    <img [src]="article.imageUrl" alt="" />
+    <h1>{{article.title}}</h1>
+
+    <div>{{article.date.toDateString()}}</div>
+    <p [innerHTML]="article.content"></p>
+</div>

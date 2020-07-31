@@ -36,10 +36,10 @@ article: Article = new Article();
          );
          this.meta.addTags([
           {name: 'description', content: this.article.description},
-          {property: 'org:title', content: this.article.title},
-          {property: 'org:description', content: this.article.description},
-          {property: 'org:image', content: this.article.imageUrl},
-          {property: 'org:site_name', content: this.sharedService.blogTitle}
+          {property: 'og:title', content: this.article.title},
+          {property: 'og:description', content: this.article.description},
+          {property: 'og:image', content: this.article.imageUrl},
+          {property: 'og:site_name', content: this.sharedService.blogTitle}
         ]);
        }
         );
